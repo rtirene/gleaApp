@@ -1,7 +1,8 @@
-package com.example.glea
+package com.example.glea.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.glea.R
 
 class MainActivity : AppCompatActivity() {
 
