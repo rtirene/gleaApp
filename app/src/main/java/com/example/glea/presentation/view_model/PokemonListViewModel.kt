@@ -21,7 +21,7 @@ class PokemonListViewModel(
 ) : ViewModel() {
 
     val pokemonIntent = Channel<PokemonIntent>(Channel.UNLIMITED)
-    private val state = MutableStateFlow<PokemonListState>(PokemonListState.Init)
+    val state = MutableStateFlow<PokemonListState>(PokemonListState.Init)
 
 
     init {

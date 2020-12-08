@@ -6,7 +6,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 class ResPokemonList {
-
     @Json(name = "count")
     var pokemonCount: Int? = null
 
