@@ -1,11 +1,12 @@
-package com.example.glea.datamanager.network.response.model
+package com.example.glea.data.datamanager.network.response.model
 
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 
 class Type {
-    @Json(name = "slot")
+    @SerializedName("slot")
     var typeOrder: Int? = null
 
-    @Json(name = "type")
+    @SerializedName("type")
     var typeDetails: Name? = null
 }

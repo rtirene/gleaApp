@@ -6,8 +6,8 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.glea.R
-import com.example.glea.datamanager.PokemonListDm
-import com.example.glea.datamanager.network.mappers.PokemonListMapper
+import com.example.glea.data.datamanager.PokemonListDm
+import com.example.glea.data.datamanager.network.mappers.PokemonListMapper
 import com.example.glea.datamanager.network.service.RetrofitServiceBuilder
 import com.example.glea.domain.models.Pokemon
 import com.example.glea.presentation.adapter.PokemonListAdapter

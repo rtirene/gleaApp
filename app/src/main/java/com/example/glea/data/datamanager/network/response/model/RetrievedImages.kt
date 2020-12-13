@@ -1,11 +1,12 @@
-package com.example.glea.datamanager.network.response.model
+package com.example.glea.data.datamanager.network.response.model
 
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 
 class RetrievedImages {
-    @Json(name = "front_shiny")
-    var frontImage: String? = null
+    @SerializedName("front_shiny")
+    var front_shiny: String? = null
 
-    @Json(name = "back_shiny")
-    var backImage: String? = null
+    @SerializedName("back_shiny")
+    var back_shiny: String? = null
 }

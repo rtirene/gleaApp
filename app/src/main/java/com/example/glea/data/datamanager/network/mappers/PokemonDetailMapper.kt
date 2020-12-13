@@ -1,4 +1,4 @@
-package com.example.glea.datamanager.network.mappers
+package com.example.glea.data.datamanager.network.mappers
 
 import com.example.glea.domain.models.Images
 import com.example.glea.domain.models.Pokemon
@@ -10,9 +10,9 @@ class PokemonDetailMapper : Mapper<ResPokemon, Pokemon> {
     override fun map(input: ResPokemon): Pokemon {
 
         return Pokemon(input.name,
-            Images(input.images?.frontImage, input.images?.backImage),
+            Images(input.sprites?.front_shiny, input.sprites?.back_shiny),
             input.stats?.map {
-                Stat(it.stat?.name, it.statValue, it.effortPoints)
+                Stat(it.stat?.name, it.base_stat, it.effort)
             },
             input.types?.map {
                 Type(it.typeOrder, it.typeDetails?.name)

@@ -1,9 +1,10 @@
-package com.example.glea.datamanager.network.response.model
+package com.example.glea.data.datamanager.network.response.model
 
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 
 
 class Pokemon : Name() {
-    @Json(name = "url")
-    var retrievalUrl: String? = null
+    @SerializedName("url")
+    var url: String? = null
 }

@@ -2,6 +2,7 @@ package com.example.glea.datamanager.network.api
 
 import com.example.glea.data.datamanager.network.response.ResPokemon
 import com.example.glea.data.datamanager.network.response.ResPokemonList
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 

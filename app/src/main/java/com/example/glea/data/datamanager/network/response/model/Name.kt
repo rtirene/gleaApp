@@ -1,8 +1,9 @@
-package com.example.glea.datamanager.network.response.model
+package com.example.glea.data.datamanager.network.response.model
 
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 
 open class Name {
-    @Json(name = "name")
+    @SerializedName("name")
     var name: String? = null
 }
