@@ -1,10 +1,13 @@
 package com.example.glea.presentation.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import com.example.glea.R
 import com.example.glea.data.datamanager.PokemonListDm
 import com.example.glea.data.datamanager.network.mappers.PokemonListMapper
@@ -18,8 +21,10 @@ import com.example.glea.presentation.view_model.PokemonListViewModelFactory
 import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@RequiresApi(Build.VERSION_CODES.M)
 @ExperimentalCoroutinesApi
 class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSelectedListener {
 
@@ -57,7 +62,9 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
             pokemonListViewModel.state.collect { pokemonListState ->
                 when (pokemonListState) {
                     is PokemonListState.PokemonList -> {
-                        renderPokemonList(pokemonListState.pokeList)
+                        pokemonListState.pokeList.collectLatest {
+                            adapter.submitData(it)
+                        }
                     }
                     is PokemonListState.Error -> {
                         error_text.visibility = View.VISIBLE
@@ -68,13 +75,8 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
         }
     }
 
-    fun renderPokemonList(pokemonList: List<Pokemon>?) {
-        pokemonList?.let {
-            adapter.pokemonList = it
-        }
-    }
 
     override fun onPokemonSelected(name: String?) {
-        //todo start detail activity passing p name
     }
 }
+

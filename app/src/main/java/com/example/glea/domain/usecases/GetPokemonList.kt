@@ -1,9 +1,11 @@
 package com.example.glea.domain.usecases
 
+import androidx.paging.PagingData
 import com.example.glea.data.repository.PokemonListRepository
 import com.example.glea.domain.models.Pokemon
+import kotlinx.coroutines.flow.Flow
 
 
-class GetPokemonList(val pokemonListRepository: PokemonListRepository) {
-    suspend operator fun invoke() : List<Pokemon>? = pokemonListRepository.getPokemonList()
+class GetPokemonList(private val pokemonListRepository: PokemonListRepository) {
+    operator fun invoke() : Flow<PagingData<Pokemon>> = pokemonListRepository.getPokemonList()
 }

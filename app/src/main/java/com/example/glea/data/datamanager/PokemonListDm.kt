@@ -9,8 +9,7 @@ class PokemonListDm constructor(
     private val mapper: PokemonListMapper,
     private val builder: RetrofitServiceBuilder
 ) : PokemonListApiHelper {
-    override suspend fun getPokemonList(): List<Pokemon>? {
-        return mapper.map(builder.api.getPokemonList())
+    override suspend fun getPokemonList(limit: Int?, offset: Int?): List<Pokemon>? {
+        return mapper.map(builder.api.getPokemonList(limit, offset))
     }
-
 }

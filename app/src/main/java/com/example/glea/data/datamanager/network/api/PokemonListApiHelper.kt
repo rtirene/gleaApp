@@ -4,5 +4,5 @@ import com.example.glea.data.datamanager.network.response.ResPokemonList
 import com.example.glea.domain.models.Pokemon
 
 interface PokemonListApiHelper {
-    suspend fun getPokemonList() : List<Pokemon>?
+    suspend fun getPokemonList(limit: Int?, offset: Int?): List<Pokemon>?
 }

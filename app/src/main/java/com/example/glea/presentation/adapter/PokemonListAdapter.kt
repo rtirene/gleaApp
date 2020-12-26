@@ -5,12 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.glea.R
 import com.example.glea.domain.models.Pokemon
 
 
-class PokemonListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PokemonListAdapter : PagingDataAdapter<Pokemon,RecyclerView.ViewHolder>(pokemonDiffCallback) {
 
     var pokemonList = emptyList<Pokemon>()
         set(value) {
@@ -48,5 +50,15 @@ class PokemonListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface OnPokemonSelectedListener {
         fun onPokemonSelected(name: String?)
+    }
+
+    companion object {
+        private val pokemonDiffCallback = object : DiffUtil.ItemCallback<Pokemon>() {
+            override fun areItemsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean =
+                oldItem.name == newItem.name
+
+            override fun areContentsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean =
+                oldItem == newItem
+        }
     }
 }
