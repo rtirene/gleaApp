@@ -28,7 +28,6 @@
         android:gravity="center_vertical"
         android:paddingStart="@dimen/small_margin"
         android:paddingEnd="@dimen/small_margin"
-        android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

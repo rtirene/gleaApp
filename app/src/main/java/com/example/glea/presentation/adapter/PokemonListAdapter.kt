@@ -3,7 +3,6 @@ package com.example.glea.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -12,13 +11,8 @@ import com.example.glea.R
 import com.example.glea.domain.models.Pokemon
 
 
-class PokemonListAdapter : PagingDataAdapter<Pokemon,RecyclerView.ViewHolder>(pokemonDiffCallback) {
-
-    var pokemonList = emptyList<Pokemon>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+class PokemonListAdapter :
+    PagingDataAdapter<Pokemon, RecyclerView.ViewHolder>(pokemonDiffCallback) {
 
     var pokemonSelectedListener: OnPokemonSelectedListener? = null
 
@@ -28,22 +22,18 @@ class PokemonListAdapter : PagingDataAdapter<Pokemon,RecyclerView.ViewHolder>(po
         )
     }
 
-    override fun getItemCount(): Int {
-        return pokemonList.size
-    }
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PokemonViewHolder) {
-            holder.bind(pokemonList[position])
+            holder.bind(getItem(position))
         }
     }
 
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val pokemon_name_text_view = itemView.findViewById<AppCompatTextView>(R.id.pokemon_name)
-        fun bind(pokemon: Pokemon) {
-            pokemon_name_text_view.text = pokemon.name
+        private val pokemonNameTextView : AppCompatTextView = itemView.findViewById(R.id.pokemon_name)
+        fun bind(pokemon: Pokemon?) {
+            pokemonNameTextView.text = pokemon?.name
             itemView.setOnClickListener {
-                pokemonSelectedListener?.onPokemonSelected(pokemon.name)
+                pokemonSelectedListener?.onPokemonSelected(pokemon?.name)
             }
         }
     }

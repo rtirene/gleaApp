@@ -13,9 +13,8 @@ class PokemonListPagingSource(private val pokemonListApiHelper: PokemonListApiHe
             val pokemonList = pokemonListApiHelper.getPokemonList(LIST_LIMIT, index * LIST_LIMIT)
             LoadResult.Page(
                 data = pokemonList!!,
-                prevKey = if (index == STARTING_INDEX) null else index,
+                prevKey = null,
                 nextKey = if (pokemonList.isEmpty()) null else index + 1
-
             )
         } catch (exception: IOException) {
             return LoadResult.Error(exception)
@@ -26,7 +25,7 @@ class PokemonListPagingSource(private val pokemonListApiHelper: PokemonListApiHe
 
     companion object {
         private const val LIST_LIMIT = 20
-        private const val STARTING_INDEX = 1
+        private const val STARTING_INDEX = 0
     }
 
 }
