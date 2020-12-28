@@ -1,10 +1,9 @@
-package com.example.glea.data.datamanager.network.response.model
+package com.example.glea.data.datamanager.model
 
-import com.example.glea.data.datamanager.network.response.model.Name
+import com.example.glea.data.datamanager.model.Name
 import com.google.gson.annotations.SerializedName
-import com.squareup.moshi.Json
 
-class RetrievedStat {
+class Stats {
 
     @SerializedName("base_stat")
     var base_stat: Int? = null

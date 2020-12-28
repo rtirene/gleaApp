@@ -1,7 +1,6 @@
-package com.example.glea.data.datamanager.network.response.model
+package com.example.glea.data.datamanager.model
 
 import com.google.gson.annotations.SerializedName
-import com.squareup.moshi.Json
 
 class Type {
     @SerializedName("slot")

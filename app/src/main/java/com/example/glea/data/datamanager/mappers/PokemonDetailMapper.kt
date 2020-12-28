@@ -4,10 +4,10 @@ import com.example.glea.domain.models.Images
 import com.example.glea.domain.models.Pokemon
 import com.example.glea.domain.models.Stat
 import com.example.glea.domain.models.Type
-import com.example.glea.data.datamanager.network.response.ResPokemon
+import com.example.glea.data.datamanager.model.PokemonDetail
 
-class PokemonDetailMapper : Mapper<ResPokemon, Pokemon> {
-    override fun map(input: ResPokemon): Pokemon {
+class PokemonDetailMapper : Mapper<PokemonDetail, Pokemon> {
+    override fun map(input: PokemonDetail): Pokemon {
 
         return Pokemon(input.name,
             Images(input.sprites?.front_shiny, input.sprites?.back_shiny),
