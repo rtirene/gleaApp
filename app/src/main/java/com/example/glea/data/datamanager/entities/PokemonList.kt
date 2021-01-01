@@ -1,11 +1,11 @@
-package com.example.glea.data.datamanager.model
+package com.example.glea.data.datamanager.entities
 
 import com.google.gson.annotations.SerializedName
 
-class PokemonList {
+data class PokemonList (
     @SerializedName("count")
-    var count: Int? = null
+    val count: Int?,
 
     @SerializedName("results")
-    var results: List<PokemonListElement>? = null
-}
+    val results: List<PokemonListElement>
+)

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">glea</string>
+    <string name="looading_error">Ops, la ricerca nel Pokedex è più lenta del previsto, controlla la tua connessione e riprova</string>
 </resources>

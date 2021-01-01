@@ -1,12 +1,10 @@
-package com.example.glea.data.datamanager.model
+package com.example.glea.data.datamanager.entities
 
 import com.google.gson.annotations.SerializedName
-import com.squareup.moshi.Json
 
-class Sprites {
-    @SerializedName("front_shiny")
-    var front_shiny: String? = null
-
-    @SerializedName("back_shiny")
-    var back_shiny: String? = null
-}
+data class Sprites (
+    @SerializedName("front_default")
+    val front_default: String?,
+    @SerializedName("back_default")
+    val back_default: String?
+)

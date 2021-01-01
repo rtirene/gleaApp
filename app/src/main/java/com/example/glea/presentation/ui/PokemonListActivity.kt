@@ -2,18 +2,18 @@ package com.example.glea.presentation.ui
 
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
 import com.example.glea.R
-import com.example.glea.data.datamanager.PokemonListDm
-import com.example.glea.data.datamanager.network.mappers.PokemonListMapper
-import com.example.glea.datamanager.network.service.RetrofitServiceBuilder
-import com.example.glea.domain.models.Pokemon
+import com.example.glea.data.datamanager.network.api.PokemonDetailApiHelper
+import com.example.glea.data.datamanager.network.api.PokemonDetailsApiHelperImpl
+import com.example.glea.data.datamanager.network.api.PokemonListApiHelperImpl
+import com.example.glea.data.datamanager.persistence.PokemonDb
+import com.example.glea.data.datamanager.network.service.RetrofitServiceBuilder
 import com.example.glea.presentation.adapter.PokemonListAdapter
+import com.example.glea.presentation.adapter.PokemonLoadStateAdapter
 import com.example.glea.presentation.intent.PokemonIntent
 import com.example.glea.presentation.states.PokemonListState
 import com.example.glea.presentation.view_model.PokemonListViewModel
@@ -35,20 +35,28 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_list)
 
-        recycler_pokemon.adapter = adapter
-        adapter.pokemonSelectedListener = this
+        initAdapter()
         initViewModel()
         observePokemonListState()
+    }
+
+    private fun initAdapter() {
+        recycler_pokemon.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = PokemonLoadStateAdapter { adapter.retry() },
+            footer = PokemonLoadStateAdapter { adapter.retry() }
+        )
+        adapter.pokemonSelectedListener = this
+
+
     }
 
     private fun initViewModel() {
         pokemonListViewModel = ViewModelProvider(
             this,
             PokemonListViewModelFactory(
-                PokemonListDm(
-                    PokemonListMapper,
-                    RetrofitServiceBuilder
-                )
+                PokemonListApiHelperImpl(RetrofitServiceBuilder),
+                PokemonDetailsApiHelperImpl(RetrofitServiceBuilder),
+                PokemonDb.create(this, false)
             )
         ).get(PokemonListViewModel::class.java)
         lifecycleScope.launch {
@@ -66,10 +74,6 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
                             adapter.submitData(it)
                         }
                     }
-                    is PokemonListState.Error -> {
-                        error_text.visibility = View.VISIBLE
-                        error_text.text = pokemonListState.error
-                    }
                 }
             }
         }
@@ -77,6 +81,7 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
 
 
     override fun onPokemonSelected(name: String?) {
+        startActivity(PokemonDetailActivity.getStartIntent(this, name))
     }
 }
 

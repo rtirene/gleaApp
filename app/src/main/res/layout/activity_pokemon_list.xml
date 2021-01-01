@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.PokemonListActivity">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_pokemon"
         android:layout_width="match_parent"
@@ -18,18 +17,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/list_item" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/error_text"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
-        android:text="errore"
-        tools:visibility="visible"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

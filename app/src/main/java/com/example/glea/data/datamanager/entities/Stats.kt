@@ -1,16 +1,14 @@
-package com.example.glea.data.datamanager.model
+package com.example.glea.data.datamanager.entities
 
-import com.example.glea.data.datamanager.model.Name
 import com.google.gson.annotations.SerializedName
 
-class Stats {
-
+data class Stats(
     @SerializedName("base_stat")
-    var base_stat: Int? = null
+    val base_stat: Int?,
 
     @SerializedName("effort")
-    var effort: Int? = null
+    val effort: Int?,
 
     @SerializedName("stat")
-    var stat: Name? = null
-}
+    val stat: Name?
+)

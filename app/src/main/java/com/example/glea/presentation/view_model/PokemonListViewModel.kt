@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import com.example.glea.data.datamanager.network.api.PokemonListApiHelper
 import com.example.glea.data.repository.PokemonListRepository
 import com.example.glea.domain.models.Pokemon
@@ -41,14 +42,10 @@ class PokemonListViewModel(
 
     private fun fetchPokemonList() {
         viewModelScope.launch {
-            state.value = PokemonListState.Loading
             //update state by fetching the list
-            state.value = try {
-                PokemonListState.PokemonList(
-                    GetPokemonList(pokemonListRepository).invoke())
-            } catch (e: Exception) {
-                PokemonListState.Error(e.localizedMessage)
-            }
+            state.value = PokemonListState.PokemonList(
+                GetPokemonList(pokemonListRepository).invoke().cachedIn(viewModelScope)
+            )
         }
     }
 

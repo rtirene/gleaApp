@@ -1,15 +1,12 @@
-package com.example.glea.data.datamanager
+package com.example.glea.data.datamanager.network.api
 
-import com.example.glea.data.datamanager.network.api.PokemonDetailApiHelper
-import com.example.glea.data.datamanager.network.mappers.PokemonDetailMapper
-import com.example.glea.datamanager.network.service.RetrofitServiceBuilder
-import com.example.glea.domain.models.Pokemon
+import com.example.glea.data.datamanager.entities.PokemonDetail
+import com.example.glea.data.datamanager.network.service.RetrofitServiceBuilder
 
-class PokemonDetailsDm constructor(
-    private val mapper: PokemonDetailMapper,
+class PokemonDetailsApiHelperImpl constructor(
     private val builder: RetrofitServiceBuilder
 ) : PokemonDetailApiHelper {
-    override suspend fun getPokemon(name: String): Pokemon {
-        return mapper.map(builder.api.getPokemonDetail(name))
+    override suspend fun getPokemon(name: String): PokemonDetail {
+        return builder.api.getPokemonDetail(name)
     }
 }

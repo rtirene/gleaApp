@@ -1,11 +1,11 @@
-package com.example.glea.data.datamanager.model
+package com.example.glea.data.datamanager.entities
 
 import com.google.gson.annotations.SerializedName
 
-class Type {
+data class Type (
     @SerializedName("slot")
-    var typeOrder: Int? = null
+    val typeOrder: Int? = null,
 
     @SerializedName("type")
-    var typeDetails: Name? = null
-}
+    val typeDetails: Name? = null
+)

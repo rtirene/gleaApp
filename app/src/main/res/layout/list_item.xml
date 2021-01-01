@@ -16,6 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/pokemon_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pokemon_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/view_separator"
+        />
+
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/pokemon_name"
@@ -29,7 +40,7 @@
         android:paddingStart="@dimen/small_margin"
         android:paddingEnd="@dimen/small_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pokemon_image"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Pokemon" />
 

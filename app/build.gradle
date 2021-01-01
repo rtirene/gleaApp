@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 29
@@ -26,6 +28,10 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
 }
 
 dependencies {
@@ -56,5 +62,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     //paging
-    implementation "androidx.paging:paging-runtime:3.0.0-alpha01"
+    implementation "androidx.paging:paging-runtime:3.0.0-alpha02"
+
+    //room
+    implementation "androidx.room:room-runtime:2.3.0-alpha04"
+    implementation "androidx.room:room-ktx:2.3.0-alpha04"
+    kapt "androidx.room:room-compiler:2.3.0-alpha04"
+
+    //sprites slider
+    implementation 'com.github.technolifestyle:AutoImageFlipper:1.6.0'
 }

@@ -1,12 +1,19 @@
 package com.example.glea.presentation.adapter
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Nullable
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestListener
 import com.example.glea.R
 import com.example.glea.domain.models.Pokemon
 
@@ -30,11 +37,22 @@ class PokemonListAdapter :
 
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val pokemonNameTextView : AppCompatTextView = itemView.findViewById(R.id.pokemon_name)
+        private val pokemonImageView : AppCompatImageView = itemView.findViewById(R.id.pokemon_image)
         fun bind(pokemon: Pokemon?) {
             pokemonNameTextView.text = pokemon?.name
+            pokemon?.imgs?.frontUrl?.let {
+                setPokemonListImage(url = pokemon.imgs.frontUrl)
+            }
             itemView.setOnClickListener {
                 pokemonSelectedListener?.onPokemonSelected(pokemon?.name)
             }
+        }
+
+        private fun setPokemonListImage(url : String){
+            Glide.with(itemView.context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(pokemonImageView)
         }
     }
 
@@ -52,3 +70,4 @@ class PokemonListAdapter :
         }
     }
 }
+

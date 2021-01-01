@@ -1,11 +1,10 @@
-package com.example.glea.datamanager.network.service
+package com.example.glea.data.datamanager.network.service
 
 import com.example.glea.ConfigUtils
 import com.example.glea.datamanager.network.api.PokemonApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitServiceBuilder {
@@ -29,6 +28,6 @@ object RetrofitServiceBuilder {
     }
 
     init {
-        this.api = createService()
+        api = createService()
     }
 }

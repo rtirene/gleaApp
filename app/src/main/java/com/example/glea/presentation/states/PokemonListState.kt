@@ -6,7 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 sealed class PokemonListState {
     object Init : PokemonListState()
-    object Loading : PokemonListState()
     data class PokemonList(val pokeList: Flow<PagingData<Pokemon>>) : PokemonListState()
-    data class Error(val error: String?) : PokemonListState()
 }
