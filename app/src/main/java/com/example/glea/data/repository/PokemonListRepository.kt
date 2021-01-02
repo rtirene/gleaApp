@@ -3,6 +3,7 @@ package com.example.glea.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.example.glea.data.datamanager.entities.PokemonDetail
 import com.example.glea.data.datamanager.entities.PokemonListElement
 import com.example.glea.data.datamanager.network.api.PokemonDetailApiHelper
 import com.example.glea.data.datamanager.network.api.PokemonListApiHelper
@@ -21,7 +22,7 @@ class PokemonListRepository(
         private const val POKE_LIST_SIZE = 20
     }
 
-    fun getPokemonList(): Flow<PagingData<PokemonListElement>> {
+    fun getPokemonList(): Flow<PagingData<PokemonDetail>> {
         return Pager(
             config = PagingConfig(
                 pageSize = POKE_LIST_SIZE,
@@ -32,7 +33,7 @@ class PokemonListRepository(
                 pokemonDetailApiHelper,
                 pokemonDb
             ),
-            pagingSourceFactory = { pokemonDb.pokemonList().getStoredPokemonList() }
+            pagingSourceFactory = { pokemonDb.pokemonList().getStoredPokemonList()}
 
         ).flow
     }

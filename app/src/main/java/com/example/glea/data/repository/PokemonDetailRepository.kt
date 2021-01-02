@@ -9,9 +9,7 @@ import com.example.glea.data.datamanager.network.api.PokemonDetailApiHelper
 import com.example.glea.data.datamanager.persistence.PokemonDb
 import com.example.glea.domain.models.Pokemon
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import java.lang.Exception
 
 class PokemonDetailRepository(
@@ -21,13 +19,9 @@ class PokemonDetailRepository(
 ) {
     suspend fun getPokemon(name: String): Pokemon? {
         return try {
-            val pokemon = pokemonDetailApiHelper.getPokemon(name)
-            pokemonDb.withTransaction {
-                pokemonDb.pokemonDetail().insert(pokemon)
-            }
-            mapper.map(pokemon)
+            mapper.map(pokemonDetailApiHelper.getPokemon(name))
         } catch (e: Exception) {
-            mapper.map(pokemonDb.pokemonDetail().selectPokemonByName(name))
+            mapper.map(pokemonDb.pokemonList().getPokemonByName(name))
         }
     }
 }

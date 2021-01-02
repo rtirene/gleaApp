@@ -9,6 +9,7 @@ import com.example.glea.data.datamanager.persistence.PokemonDb
 import retrofit2.HttpException
 import java.io.IOException
 import androidx.room.withTransaction
+import com.example.glea.data.datamanager.entities.PokemonDetail
 import com.example.glea.data.datamanager.entities.PokemonListElement
 import com.example.glea.data.datamanager.entities.PokemonListElementRemoteKeys
 import com.example.glea.data.datamanager.network.api.PokemonDetailApiHelper
@@ -23,14 +24,14 @@ class PokemonListRemoteMediator(
     private val pokemonListApiHelper: PokemonListApiHelper,
     private val pokemonDetailApiHelper: PokemonDetailApiHelper,
     private val pokemonDb: PokemonDb
-) : RemoteMediator<Int, PokemonListElement>() {
+) : RemoteMediator<Int, PokemonDetail>() {
 
     private val listDao: PokemonListDao = pokemonDb.pokemonList()
     private val remoteKeysDao: RemoteKeysDao = pokemonDb.pokemonListRemoteKeys()
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, PokemonListElement>
+        state: PagingState<Int, PokemonDetail>
     ): MediatorResult {
         try {
             val page = when (loadType) {
@@ -55,14 +56,17 @@ class PokemonListRemoteMediator(
                 offset = page * state.config.pageSize
             )
 
-            val endOfPaginationReached = pokemonList.size < state.config.pageSize
+            val pokemonDetailedList = pokemonList.map { pokemonListElement ->
+                pokemonDetailApiHelper.getPokemon(pokemonListElement.name)
+            }
+
+            val endOfPaginationReached = pokemonDetailedList.size < state.config.pageSize
 
             pokemonDb.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     listDao.deleteList()
                     remoteKeysDao.clearRemoteKeys()
                 }
-
 
 
                 val prevKey = if (page == STARTING_INDEX) null else page - 1
@@ -76,8 +80,9 @@ class PokemonListRemoteMediator(
                 }
 
 
+                listDao.insertAll(pokemonDetailedList)
                 pokemonDb.pokemonListRemoteKeys().insertAll(keys)
-                listDao.insertAll(pokemonList)
+
 
             }
             return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
@@ -89,7 +94,7 @@ class PokemonListRemoteMediator(
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, PokemonListElement>): PokemonListElementRemoteKeys? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, PokemonDetail>): PokemonListElementRemoteKeys? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
             .let { pokemon ->
                 pokemonDb.withTransaction {
@@ -98,7 +103,7 @@ class PokemonListRemoteMediator(
             }
     }
 
-    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, PokemonListElement>): PokemonListElementRemoteKeys? {
+    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, PokemonDetail>): PokemonListElementRemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.name?.let { name ->
                 pokemonDb.withTransaction {

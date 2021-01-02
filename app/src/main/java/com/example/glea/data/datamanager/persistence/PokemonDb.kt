@@ -14,8 +14,8 @@ import com.example.glea.data.datamanager.persistence.type_converters.TypesTypeCo
 
 
 @Database(
-    entities = [PokemonListElement::class, PokemonDetail::class, PokemonListElementRemoteKeys::class],
-    version = 1,
+    entities = [PokemonDetail::class, PokemonListElementRemoteKeys::class],
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(value = [SpritesTypeConverter::class, StatsTypeConverter::class, TypesTypeConverter::class])
@@ -35,6 +35,5 @@ abstract class PokemonDb : RoomDatabase() {
     }
 
     abstract fun pokemonList(): PokemonListDao
-    abstract fun pokemonDetail(): PokemonDao
     abstract fun pokemonListRemoteKeys(): RemoteKeysDao
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
+import com.example.glea.data.datamanager.mappers.PokemonDetailMapper
 import com.example.glea.data.datamanager.network.api.PokemonListApiHelper
 import com.example.glea.data.repository.PokemonListRepository
 import com.example.glea.domain.models.Pokemon
@@ -21,7 +22,8 @@ import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 class PokemonListViewModel(
-    private val pokemonListRepository: PokemonListRepository
+    private val pokemonListRepository: PokemonListRepository,
+    private val pokemonMapper : PokemonDetailMapper
 ) : ViewModel() {
     val pokemonIntent = Channel<PokemonIntent>(Channel.UNLIMITED)
     val state = MutableStateFlow<PokemonListState>(PokemonListState.Init)
@@ -44,7 +46,7 @@ class PokemonListViewModel(
         viewModelScope.launch {
             //update state by fetching the list
             state.value = PokemonListState.PokemonList(
-                GetPokemonList(pokemonListRepository).invoke().cachedIn(viewModelScope)
+                GetPokemonList(pokemonListRepository, pokemonMapper).invoke().cachedIn(viewModelScope)
             )
         }
     }

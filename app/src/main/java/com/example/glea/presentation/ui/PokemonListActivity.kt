@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.glea.R
+import com.example.glea.data.datamanager.mappers.PokemonDetailMapper
 import com.example.glea.data.datamanager.network.api.PokemonDetailApiHelper
 import com.example.glea.data.datamanager.network.api.PokemonDetailsApiHelperImpl
 import com.example.glea.data.datamanager.network.api.PokemonListApiHelperImpl
 import com.example.glea.data.datamanager.persistence.PokemonDb
 import com.example.glea.data.datamanager.network.service.RetrofitServiceBuilder
+import com.example.glea.domain.models.Pokemon
 import com.example.glea.presentation.adapter.PokemonListAdapter
 import com.example.glea.presentation.adapter.PokemonLoadStateAdapter
 import com.example.glea.presentation.intent.PokemonIntent
@@ -37,7 +39,7 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
 
         initAdapter()
         initViewModel()
-        observePokemonListState()
+        //observePokemonListState()
     }
 
     private fun initAdapter() {
@@ -56,11 +58,13 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
             PokemonListViewModelFactory(
                 PokemonListApiHelperImpl(RetrofitServiceBuilder),
                 PokemonDetailsApiHelperImpl(RetrofitServiceBuilder),
-                PokemonDb.create(this, false)
+                PokemonDb.create(this, false),
+                PokemonDetailMapper()
             )
         ).get(PokemonListViewModel::class.java)
         lifecycleScope.launch {
             pokemonListViewModel.pokemonIntent.send(PokemonIntent.FetchPokemonList)
+            observePokemonListState()
 
         }
     }
@@ -80,8 +84,10 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
     }
 
 
-    override fun onPokemonSelected(name: String?) {
-        startActivity(PokemonDetailActivity.getStartIntent(this, name))
+    override fun onPokemonSelected(pokemon: Pokemon?) {
+        //todo start bottom sheet fragment passing pokemon detailed info
+        val pokemonDetailFragment = PokemonDetailFragment.newInstance(pokemon)
+        pokemonDetailFragment.show(supportFragmentManager, PokemonDetailFragment.TAG)
     }
 }
 

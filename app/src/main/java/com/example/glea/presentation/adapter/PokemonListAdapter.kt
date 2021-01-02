@@ -44,7 +44,7 @@ class PokemonListAdapter :
                 setPokemonListImage(url = pokemon.imgs.frontUrl)
             }
             itemView.setOnClickListener {
-                pokemonSelectedListener?.onPokemonSelected(pokemon?.name)
+                pokemonSelectedListener?.onPokemonSelected(pokemon)
             }
         }
 
@@ -57,7 +57,7 @@ class PokemonListAdapter :
     }
 
     interface OnPokemonSelectedListener {
-        fun onPokemonSelected(name: String?)
+        fun onPokemonSelected(pokemon: Pokemon?)
     }
 
     companion object {
