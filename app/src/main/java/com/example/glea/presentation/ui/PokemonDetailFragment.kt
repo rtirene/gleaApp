@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.glea.R
 import com.example.glea.domain.models.Pokemon
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -28,12 +29,25 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
             pokemon_name.text = it.name
             Glide.with(this)
                 .load(it.imgs?.frontUrl)
+                .apply(
+                    RequestOptions()
+                        .override(resources.getDimensionPixelSize(R.dimen.pokemon_detail_image), resources.getDimensionPixelSize(R.dimen.pokemon_detail_image))
+                )
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .into(pokemon_image_detail_front)
+                .onLoadFailed(null)
+
+
+
             Glide.with(this)
                 .load(it.imgs?.backUrl)
+                .apply(
+                    RequestOptions()
+                        .override(resources.getDimensionPixelSize(R.dimen.pokemon_detail_image), resources.getDimensionPixelSize(R.dimen.pokemon_detail_image))
+                )
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .into(pokemon_image_detail_back)
+                .onLoadFailed(null)
         }
     }
 
@@ -57,3 +71,6 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
         }
     }
 }
+
+
+

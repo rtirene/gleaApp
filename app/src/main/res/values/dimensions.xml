@@ -2,4 +2,18 @@
 <resources>
     <dimen name="small_margin">15dp</dimen>
     <dimen name="very_small_margin">10dp</dimen>
+    <dimen name="big_margin">30dp</dimen>
+    <dimen name="smallest_margin">5dp</dimen>
+
+
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_big">30sp</dimen>
+    <dimen name="text_size_very_big">40sp</dimen>
+
+    <dimen name="pokemon_detail_image">250dp</dimen>
+
+
+
+
 </resources>
