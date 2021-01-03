@@ -9,14 +9,17 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.glea.R
 import com.example.glea.domain.models.Pokemon
+import com.example.glea.domain.models.Stat
 import com.example.glea.domain.models.Type
+import com.example.glea.presentation.adapter.StatsAdapter
 import com.example.glea.presentation.adapter.TypesAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.*
 
 class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener {
 
-    private val adapter: TypesAdapter = TypesAdapter()
+    private val typeAdapter: TypesAdapter = TypesAdapter()
+    private val statsAdapter: StatsAdapter = StatsAdapter()
 
 
     override fun onCreateView(
@@ -35,6 +38,7 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
             setFrontImage(it.imgs?.frontUrl)
             setBackImage(it.imgs?.backUrl)
             initTypesAdapter(it.type)
+            initStatsAdapter(it.stats)
 
 
         }
@@ -73,9 +77,16 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
     }
 
     private fun initTypesAdapter(types: List<Type?>?) {
-        type_recycler.adapter = adapter
+        type_recycler.adapter = typeAdapter
         types?.let { typeList ->
-            adapter.typeList = typeList
+            typeAdapter.typeList = typeList
+        }
+    }
+
+    private fun initStatsAdapter(stats: List<Stat?>?){
+        stats_recycler.adapter = statsAdapter
+        stats?.let {statsList ->
+            statsAdapter.statList = statsList
         }
     }
 

@@ -10,6 +10,7 @@
 
     <dimen name="text_size_small">16sp</dimen>
     <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_medium_big">25sp</dimen>
     <dimen name="text_size_big">30sp</dimen>
     <dimen name="text_size_very_big">40sp</dimen>
 

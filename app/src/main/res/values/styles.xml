@@ -21,6 +21,10 @@
         <item name="android:fontFamily">@font/bebas_neue_regular</item>
     </style>
 
+    <style name="AppTheme.TextValueStyle">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
     <style name="AppTheme.TextType" parent="AppTheme.TextStyle">
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
@@ -28,5 +32,15 @@
     <style name="AppTheme.TextTitle" parent="AppTheme.TextStyle">
         <item name="android:textSize">@dimen/text_size_very_big</item>
     </style>
+
+    <style name="AppTheme.TextTitleStat" parent="AppTheme.TextStyle">
+        <item name="android:textSize">@dimen/text_size_medium_big</item>
+    </style>
+
+    <style name="AppTheme.TextValueStat" parent="AppTheme.TextValueStyle">
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+
 
 </resources>

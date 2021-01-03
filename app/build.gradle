@@ -76,4 +76,8 @@ dependencies {
     //material
     implementation 'com.google.android.material:material:1.2.1'
 
+    //progressbar
+    compile 'com.daimajia.numberprogressbar:library:1.4@aar'
+
+
 }
