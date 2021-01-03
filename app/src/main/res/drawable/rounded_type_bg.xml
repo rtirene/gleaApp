@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item app:fighting="true">
+        <shape>
+            <solid android:color="@color/blue_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/blue" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:flying="true">
+        <shape>
+            <solid android:color="@color/blue_green_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/blue_green" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:poison="true">
+        <shape>
+            <solid android:color="@color/violet_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/violet" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:ground="true">
+        <shape>
+            <solid android:color="@color/brown_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/brown" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+    <item app:rock="true">
+        <shape>
+            <solid android:color="@color/black_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/black" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+    <item app:bug="true">
+        <shape>
+            <solid android:color="@color/green_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/green" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:ghost="true">
+        <shape>
+            <solid android:color="@color/dark_grey_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/dark_grey" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:steel="true">
+        <shape>
+            <solid android:color="@color/dark_blue_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/dark_blue" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:fire="true">
+        <shape>
+            <solid android:color="@color/orange_red_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/orange_red" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:water="true">
+        <shape>
+            <solid android:color="@color/light_blue_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/light_blue" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:grass="true">
+        <shape>
+            <solid android:color="@color/green_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/green" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:electric="true">
+        <shape>
+            <solid android:color="@color/yellow_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/yellow" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:psychic="true">
+        <shape>
+            <solid android:color="@color/violet_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/violet" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+    <item app:ice="true">
+        <shape>
+            <solid android:color="@color/light_blue_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/light_blue" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:dragon="true">
+        <shape>
+            <solid android:color="@color/watermelon_red_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/watermelon_red" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+    <item app:dark="true">
+        <shape>
+            <solid android:color="@color/dark_violet_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/dark_violet" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item app:fairy="true">
+        <shape>
+            <solid android:color="@color/hot_pink_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/hot_pink" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+    <item app:normal="true">
+        <shape>
+            <solid android:color="@color/dark_grey_transparent" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/dark_grey" />
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+
+
+
+
+</selector>

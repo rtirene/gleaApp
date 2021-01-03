@@ -6,5 +6,50 @@
 
     <color name="gray">#DCDCDC</color>
 
+    <color name="bordeaux">#3C0707</color>
+    <color name="bordeaux_transparent">#80661616</color>
+
+    <color name="dark_grey">#202020</color>
+    <color name="dark_grey_transparent">#4D202020</color>
+
+    <color name="blue">#151F5C</color>
+    <color name="blue_transparent">#803542B4</color>
+
+    <color name="light_blue">#049ECF</color>
+    <color name="light_blue_transparent">#4D049ECF</color>
+
+    <color name="dark_blue">#020B30</color>
+    <color name="dark_blue_transparent">#33020B30</color>
+
+
+    <color name="blue_green">#017568</color>
+    <color name="blue_green_transparent">#4D017568</color>
+
+    <color name="violet">#512DA8</color>
+    <color name="violet_transparent">#667158B4</color>
+
+    <color name="dark_violet">#1D0D4B</color>
+    <color name="dark_violet_transparent">#4D1D0D4B</color>
+
+    <color name="brown">#4E3003</color>
+    <color name="brown_transparent">#4D8A5304</color>
+
+    <color name="black">#000000</color>
+    <color name="black_transparent">#33000000</color>
+
+    <color name="green">#2A772E</color>
+    <color name="green_transparent">#4D2A772E</color>
+
+    <color name="orange_red">#B83000</color>
+    <color name="orange_red_transparent">#4DB83000</color>
+
+    <color name="yellow">#B99300</color>
+    <color name="yellow_transparent">#4DFDE400</color>
+
+    <color name="watermelon_red">#80011D</color>
+    <color name="watermelon_red_transparent">#4DDA0033</color>
+
+    <color name="hot_pink">#DA00B6</color>
+    <color name="hot_pink_transparent">#4DDA00B6</color>
 
 </resources>

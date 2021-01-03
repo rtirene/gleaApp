@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="typeItem">
+        <attr name="fighting" format="boolean"/>
+        <attr name="flying" format="boolean"/>
+        <attr name="poison" format="boolean"/>
+        <attr name="ground" format="boolean"/>
+        <attr name="rock" format="boolean"/>
+        <attr name="bug" format="boolean"/>
+        <attr name="ghost" format="boolean"/>
+        <attr name="steel" format="boolean"/>
+        <attr name="fire" format="boolean"/>
+        <attr name="water" format="boolean"/>
+        <attr name="grass" format="boolean"/>
+        <attr name="electric" format="boolean"/>
+        <attr name="psychic" format="boolean"/>
+        <attr name="ice" format="boolean"/>
+        <attr name="dragon" format="boolean"/>
+        <attr name="dark" format="boolean"/>
+        <attr name="fairy" format="boolean"/>
+        <attr name="normal" format="boolean"/>
+    </declare-styleable>
+</resources>
+
+

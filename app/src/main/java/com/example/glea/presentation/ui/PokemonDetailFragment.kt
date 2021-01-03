@@ -9,10 +9,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.glea.R
 import com.example.glea.domain.models.Pokemon
+import com.example.glea.domain.models.Type
+import com.example.glea.presentation.adapter.TypesAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.*
 
 class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener {
+
+    private val adapter: TypesAdapter = TypesAdapter()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,27 +32,50 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
         pokemon_image_detail_back.setOnClickListener(this)
         pokemon.let {
             pokemon_name.text = it.name
-            Glide.with(this)
-                .load(it.imgs?.frontUrl)
-                .apply(
-                    RequestOptions()
-                        .override(resources.getDimensionPixelSize(R.dimen.pokemon_detail_image), resources.getDimensionPixelSize(R.dimen.pokemon_detail_image))
-                )
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .into(pokemon_image_detail_front)
-                .onLoadFailed(null)
+            setFrontImage(it.imgs?.frontUrl)
+            setBackImage(it.imgs?.backUrl)
+            initTypesAdapter(it.type)
 
 
+        }
+    }
 
-            Glide.with(this)
-                .load(it.imgs?.backUrl)
-                .apply(
-                    RequestOptions()
-                        .override(resources.getDimensionPixelSize(R.dimen.pokemon_detail_image), resources.getDimensionPixelSize(R.dimen.pokemon_detail_image))
-                )
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .into(pokemon_image_detail_back)
-                .onLoadFailed(null)
+    private fun setFrontImage(url: String?) {
+        Glide.with(this)
+            .load(url)
+            .apply(
+                RequestOptions()
+                    .override(
+                        resources.getDimensionPixelSize(R.dimen.pokemon_detail_image),
+                        resources.getDimensionPixelSize(R.dimen.pokemon_detail_image)
+                    )
+            )
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .into(pokemon_image_detail_front)
+            .onLoadFailed(null)
+
+    }
+
+    private fun setBackImage(url: String?) {
+
+        Glide.with(this)
+            .load(url)
+            .apply(
+                RequestOptions()
+                    .override(
+                        resources.getDimensionPixelSize(R.dimen.pokemon_detail_image),
+                        resources.getDimensionPixelSize(R.dimen.pokemon_detail_image)
+                    )
+            )
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .into(pokemon_image_detail_back)
+            .onLoadFailed(null)
+    }
+
+    private fun initTypesAdapter(types: List<Type?>?) {
+        type_recycler.adapter = adapter
+        types?.let { typeList ->
+            adapter.typeList = typeList
         }
     }
 

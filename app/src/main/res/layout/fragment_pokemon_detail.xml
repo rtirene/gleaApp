@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal">
 
     <FrameLayout
         android:id="@+id/view_close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <View
             android:layout_width="24dp"
@@ -33,25 +35,46 @@
             android:id="@+id/pokemon_image_detail_front"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            />
+            android:layout_gravity="center_horizontal" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/pokemon_image_detail_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal" />
     </ViewFlipper>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/pokemon_name"
+        style="@style/AppTheme.TextTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallest_margin"
         android:gravity="center"
-        android:fontFamily="@font/bebas_neue_regular"
-        android:textSize="@dimen/text_size_very_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sprites_slider" />
+        app:layout_constraintTop_toBottomOf="@id/sprites_slider"
+        tools:text="BULBASAUR" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_medium_margin"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pokemon_name">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/type_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/small_medium_margin"
+            android:layout_marginEnd="@dimen/small_medium_margin"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_item_type" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

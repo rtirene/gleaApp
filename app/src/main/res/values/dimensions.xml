@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="small_margin">15dp</dimen>
+    <dimen name="small_medium_margin">20dp</dimen>
     <dimen name="very_small_margin">10dp</dimen>
     <dimen name="big_margin">30dp</dimen>
     <dimen name="smallest_margin">5dp</dimen>
+    <dimen name="line_margin">2dp</dimen>
 
 
     <dimen name="text_size_small">16sp</dimen>
@@ -12,6 +14,7 @@
     <dimen name="text_size_very_big">40sp</dimen>
 
     <dimen name="pokemon_detail_image">250dp</dimen>
+    <dimen name="pokemon_type_banner_length">70dp</dimen>
 
 
 

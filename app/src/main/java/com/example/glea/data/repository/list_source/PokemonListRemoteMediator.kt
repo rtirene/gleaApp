@@ -79,7 +79,6 @@ class PokemonListRemoteMediator(
                     )
                 }
 
-
                 listDao.insertAll(pokemonDetailedList)
                 pokemonDb.pokemonListRemoteKeys().insertAll(keys)
 

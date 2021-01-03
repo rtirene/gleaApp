@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.glea.presentation.components.TypeItemTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/type_element"
+    style="@style/AppTheme.TextType"
+    android:layout_width="@dimen/pokemon_type_banner_length"
+    android:layout_height="@dimen/big_margin"
+    android:layout_marginEnd="@dimen/very_small_margin"
+    android:background="@drawable/rounded_type_bg"
+    android:paddingStart="@dimen/smallest_margin"
+    android:paddingTop="@dimen/line_margin"
+    android:paddingEnd="@dimen/smallest_margin"
+    android:paddingBottom="@dimen/line_margin"
+    android:layout_marginBottom="@dimen/small_medium_margin"
+    android:textAlignment="center"
+    android:gravity="center"
+    android:textAllCaps="true"
+    tools:text="hello" />

@@ -39,7 +39,7 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
 
         initAdapter()
         initViewModel()
-        //observePokemonListState()
+        observePokemonListState()
     }
 
     private fun initAdapter() {
@@ -64,7 +64,6 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
         ).get(PokemonListViewModel::class.java)
         lifecycleScope.launch {
             pokemonListViewModel.pokemonIntent.send(PokemonIntent.FetchPokemonList)
-            observePokemonListState()
 
         }
     }
