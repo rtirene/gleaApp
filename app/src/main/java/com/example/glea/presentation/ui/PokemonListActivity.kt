@@ -20,6 +20,7 @@ import com.example.glea.presentation.intent.PokemonIntent
 import com.example.glea.presentation.states.PokemonListState
 import com.example.glea.presentation.view_model.PokemonListViewModel
 import com.example.glea.presentation.view_model.PokemonListViewModelFactory
+import com.example.glea.util.Types
 import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
@@ -36,7 +37,7 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
     private val adapter: PokemonListAdapter = PokemonListAdapter()
     private lateinit var pokemonListViewModel: PokemonListViewModel
 
-    private val pokemonDb: PokemonDb by inject { parametersOf(this, false) }
+    private val pokemonDb: PokemonDb by inject { parametersOf(this, false, this, this, this) }
     private val pokemonListApiHelperImpl: PokemonListApiHelperImpl by inject { parametersOf(this) }
     private val pokemonDetailsApiHelperImpl: PokemonDetailsApiHelperImpl by inject {
         parametersOf(
@@ -103,6 +104,9 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
             initial_loading_view.visibility = View.VISIBLE
             delay(4000)
             initial_loading_view.visibility = View.GONE
+            //start view pager on all
+            val type = listOf<Types>()
+
 
         }
     }

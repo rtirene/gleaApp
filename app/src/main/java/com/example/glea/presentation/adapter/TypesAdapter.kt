@@ -7,6 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.glea.R
 import com.example.glea.domain.models.Type
 import com.example.glea.presentation.components.TypeItemTextView
+import com.example.glea.util.Types.Companion.BUG
+import com.example.glea.util.Types.Companion.DARK
+import com.example.glea.util.Types.Companion.DRAGON
+import com.example.glea.util.Types.Companion.ELECTRIC
+import com.example.glea.util.Types.Companion.FAIRY
+import com.example.glea.util.Types.Companion.FIGHTING
+import com.example.glea.util.Types.Companion.FIRE
+import com.example.glea.util.Types.Companion.FLYING
+import com.example.glea.util.Types.Companion.GHOST
+import com.example.glea.util.Types.Companion.GRASS
+import com.example.glea.util.Types.Companion.GROUND
+import com.example.glea.util.Types.Companion.ICE
+import com.example.glea.util.Types.Companion.POISON
+import com.example.glea.util.Types.Companion.PSYCHIC
+import com.example.glea.util.Types.Companion.ROCK
+import com.example.glea.util.Types.Companion.STEEL
+import com.example.glea.util.Types.Companion.WATER
 
 
 class TypesAdapter : RecyclerView.Adapter<TypesAdapter.TypeViewHolder>() {
@@ -30,7 +47,9 @@ class TypesAdapter : RecyclerView.Adapter<TypesAdapter.TypeViewHolder>() {
             when (type) {
                 FIGHTING -> return TypeItemTextView.TextStatus.TYPE_FIGHTING
                 FLYING -> return TypeItemTextView.TextStatus.TYPE_FLYING
-                POISON -> return TypeItemTextView.TextStatus.TYPE_POISON
+                POISON -> {
+                    return TypeItemTextView.TextStatus.TYPE_POISON
+                }
                 GROUND -> return TypeItemTextView.TextStatus.TYPE_GROUND
                 ROCK -> return TypeItemTextView.TextStatus.TYPE_ROCK
                 BUG -> return TypeItemTextView.TextStatus.TYPE_BUG
@@ -66,23 +85,5 @@ class TypesAdapter : RecyclerView.Adapter<TypesAdapter.TypeViewHolder>() {
         holder.bind(typeList[position])
     }
 
-    companion object {
-        const val GHOST = "ghost"
-        const val STEEL = "steel"
-        const val DRAGON = "dragon"
-        const val FLYING = "flying"
-        const val WATER = "water"
-        const val ICE = "ice"
-        const val GRASS = "grass"
-        const val BUG = "bug"
-        const val ELECTRIC = "electric"
-        const val GROUND = "ground"
-        const val ROCK = "rock"
-        const val FIRE = "fire"
-        const val FIGHTING = "fighting"
-        const val DARK = "dark"
-        const val PSYCHIC = "psychic"
-        const val FAIRY = "fairy"
-        const val POISON = "poison"
-    }
+
 }

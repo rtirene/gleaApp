@@ -11,6 +11,9 @@ import com.example.glea.data.datamanager.entities.PokemonListElementRemoteKeys
 import com.example.glea.data.datamanager.persistence.type_converters.SpritesTypeConverter
 import com.example.glea.data.datamanager.persistence.type_converters.StatsTypeConverter
 import com.example.glea.data.datamanager.persistence.type_converters.TypesTypeConverter
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
+import org.koin.java.KoinJavaComponent.inject
 
 
 @Database(
@@ -22,13 +25,22 @@ import com.example.glea.data.datamanager.persistence.type_converters.TypesTypeCo
 
 abstract class PokemonDb : RoomDatabase() {
     companion object {
-        fun create(context: Context, useInMemory: Boolean): PokemonDb {
+        fun create(
+            context: Context,
+            useInMemory: Boolean,
+            spritesTypeConverter: SpritesTypeConverter,
+            statsTypeConverter: StatsTypeConverter,
+            typesTypeConverter: TypesTypeConverter
+        ): PokemonDb {
             val databaseBuilder = if (useInMemory) {
                 Room.inMemoryDatabaseBuilder(context, PokemonDb::class.java)
             } else {
                 Room.databaseBuilder(context, PokemonDb::class.java, "pokemon.db")
             }
             return databaseBuilder
+                .addTypeConverter(spritesTypeConverter)
+                .addTypeConverter(statsTypeConverter)
+                .addTypeConverter(typesTypeConverter)
                 .fallbackToDestructiveMigration()
                 .build()
         }
