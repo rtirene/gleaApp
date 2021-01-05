@@ -10,10 +10,8 @@ import retrofit2.HttpException
 import java.io.IOException
 import androidx.room.withTransaction
 import com.example.glea.data.datamanager.entities.PokemonDetail
-import com.example.glea.data.datamanager.entities.PokemonListElement
 import com.example.glea.data.datamanager.entities.PokemonListElementRemoteKeys
 import com.example.glea.data.datamanager.network.api.PokemonDetailApiHelper
-import com.example.glea.data.datamanager.persistence.PokemonDao
 import com.example.glea.data.datamanager.persistence.PokemonListDao
 import com.example.glea.data.datamanager.persistence.RemoteKeysDao
 import java.io.InvalidObjectException
@@ -37,6 +35,7 @@ class PokemonListRemoteMediator(
             val page = when (loadType) {
                 LoadType.REFRESH -> {
                     val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
+                    //get next page value including last item and proceed to refresh
                     remoteKeys?.nextKey?.minus(1) ?: STARTING_INDEX
                 }
                 LoadType.PREPEND -> {

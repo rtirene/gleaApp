@@ -1,14 +1,16 @@
 package com.example.glea.data.datamanager.entities
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Stats(
-    @SerializedName("base_stat")
+    @Json(name = "base_stat")
     val base_stat: Int?,
 
-    @SerializedName("effort")
+    @Json(name = "effort")
     val effort: Int?,
 
-    @SerializedName("stat")
+    @Json(name = "stat")
     val stat: Name?
 )

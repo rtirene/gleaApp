@@ -22,13 +22,11 @@ class StatsAdapter : RecyclerView.Adapter<StatsAdapter.StatsViewHolder>() {
     inner class StatsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val statTextName = itemView.findViewById<AppCompatTextView>(R.id.stat_name)
         private val statTextValue = itemView.findViewById<AppCompatTextView>(R.id.stat_value)
-        //private val statProgress = itemView.findViewById<ProgressBar>(R.id.stat_progress_bar)
         fun bind(stat: Stat?) {
             stat?.let {
                 statTextName.text = it.name
                 it.value?.let { value ->
                     statTextValue.text = value.toString()
-                    //statProgress.progress = value
                 }
 
             }

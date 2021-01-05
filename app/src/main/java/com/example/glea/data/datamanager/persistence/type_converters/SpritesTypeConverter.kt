@@ -2,19 +2,22 @@ package com.example.glea.data.datamanager.persistence.type_converters
 
 import androidx.room.TypeConverter
 import com.example.glea.data.datamanager.entities.Sprites
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.example.glea.data.datamanager.persistence.PokemonDb
+import com.squareup.moshi.Moshi
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
+import org.koin.java.KoinJavaComponent.inject
 
 class SpritesTypeConverter {
+    //todo move to di
+    private val moshi = Moshi.Builder().build()
     @TypeConverter
     fun fromSprites(sprites: Sprites?): String? {
-        val type = object : TypeToken<Sprites>() {}.type
-        return Gson().toJson(sprites, type)
+        return moshi.adapter(Sprites::class.java).toJson(sprites)
     }
 
     @TypeConverter
     fun toSprites(sprites: String?): Sprites? {
-        val type = object : TypeToken<Sprites>() {}.type
-        return Gson().fromJson<Sprites>(sprites, type)
+        return moshi.adapter(Sprites::class.java).fromJson(sprites)
     }
 }

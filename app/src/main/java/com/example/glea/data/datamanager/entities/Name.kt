@@ -2,11 +2,13 @@ package com.example.glea.data.datamanager.entities
 
 import androidx.annotation.NonNull
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Name(
     @PrimaryKey
     @NonNull
-    @SerializedName("name")
+    @Json(name = "name")
     val name: String
 )

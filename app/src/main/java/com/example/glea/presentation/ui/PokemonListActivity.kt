@@ -2,12 +2,12 @@ package com.example.glea.presentation.ui
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import com.example.glea.R
 import com.example.glea.data.datamanager.mappers.PokemonDetailMapper
 import com.example.glea.data.datamanager.network.api.PokemonDetailsApiHelperImpl
@@ -21,12 +21,9 @@ import com.example.glea.presentation.states.PokemonListState
 import com.example.glea.presentation.view_model.PokemonListViewModel
 import com.example.glea.presentation.view_model.PokemonListViewModelFactory
 import kotlinx.android.synthetic.main.activity_pokemon_list.*
-import kotlinx.android.synthetic.main.fragment_splash.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

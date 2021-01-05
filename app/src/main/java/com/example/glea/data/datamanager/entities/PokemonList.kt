@@ -1,11 +1,13 @@
 package com.example.glea.data.datamanager.entities
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class PokemonList (
-    @SerializedName("count")
+    @Json(name = "count")
     val count: Int?,
 
-    @SerializedName("results")
+    @Json(name = "results")
     val results: List<PokemonListElement>
 )

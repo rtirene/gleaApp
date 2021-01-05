@@ -1,11 +1,13 @@
 package com.example.glea.data.datamanager.entities
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Type (
-    @SerializedName("slot")
+    @Json(name = "slot")
     val typeOrder: Int? = null,
 
-    @SerializedName("type")
+    @Json(name = "type")
     val typeDetails: Name? = null
 )

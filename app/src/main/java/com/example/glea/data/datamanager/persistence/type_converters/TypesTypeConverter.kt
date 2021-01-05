@@ -2,19 +2,20 @@ package com.example.glea.data.datamanager.persistence.type_converters
 
 import androidx.room.TypeConverter
 import com.example.glea.data.datamanager.entities.Type
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 
 class TypesTypeConverter {
+    private val moshi = Moshi.Builder().build()
+    private val typesClass = Types.newParameterizedType(List::class.java, Type::class.java)
+
     @TypeConverter
     fun fromTypeList(types: List<Type?>?): String? {
-        val type = object : TypeToken<List<Type>>() {}.type
-        return Gson().toJson(types, type)
+        return moshi.adapter<List<Type?>>(typesClass).toJson(types)
     }
 
     @TypeConverter
     fun toTypeList(types: String?): List<Type>? {
-        val type = object : TypeToken<List<Type>>() {}.type
-        return Gson().fromJson<List<Type>>(types, type)
+        return moshi.adapter<List<Type>>(typesClass).fromJson(types).orEmpty()
     }
 }

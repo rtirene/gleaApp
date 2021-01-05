@@ -4,30 +4,32 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 @Entity(tableName = "pokemon_detail")
+@JsonClass(generateAdapter = true)
 data class PokemonDetail(
     @PrimaryKey
     @NonNull
-    @SerializedName("name")
+    @Json(name = "name")
     @ColumnInfo(name = "name")
     val name: String,
 
     @ColumnInfo(name = "id")
-    @SerializedName("id")
+    @Json(name = "id")
     var id: Int? = null,
 
     @ColumnInfo(name = "sprites")
-    @SerializedName("sprites")
+    @Json(name = "sprites")
     var sprites: Sprites? = null,
 
     @ColumnInfo(name = "stats")
-    @SerializedName("stats")
+    @Json(name = "stats")
     var stats: List<Stats>? = null,
 
     @ColumnInfo(name = "types")
-    @SerializedName("types")
+    @Json(name = "types")
     var types: List<Type>? = null
 
 
