@@ -12,6 +12,7 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.glea.R
+import com.example.glea.presentation.components.PokeballLoadingDot
 
 class PokemonLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<PokemonLoadStateAdapter.LoadingStateViewHolder>() {
@@ -38,7 +39,7 @@ class PokemonLoadStateAdapter(private val retry: () -> Unit) :
             }
         }
 
-        private val loader: ProgressBar = view.findViewById(R.id.loader)
+        private val loader: PokeballLoadingDot = view.findViewById(R.id.loader)
         private val retryButton: AppCompatButton = view.findViewById(R.id.retry_button)
         private val textError: AppCompatTextView = view.findViewById(R.id.error_message)
 
@@ -51,6 +52,7 @@ class PokemonLoadStateAdapter(private val retry: () -> Unit) :
         fun bind(loadState: LoadState) {
             loader.visibility = if (loadState is LoadState.Loading) View.VISIBLE else View.GONE
             textError.visibility = if (loadState is LoadState.Error) View.VISIBLE else View.GONE
+            retryButton.visibility = if (loadState is LoadState.Error) View.VISIBLE else View.GONE
         }
     }
 }

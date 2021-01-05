@@ -5,6 +5,6 @@ import com.example.glea.domain.models.Pokemon
 import kotlinx.coroutines.flow.Flow
 
 sealed class PokemonListState {
-    object Init : PokemonListState()
-    data class PokemonList(val pokeList: Flow<PagingData<Pokemon>>) : PokemonListState()
+    object Loading : PokemonListState()
+    data class PokemonList(val pokeList: PagingData<Pokemon>) : PokemonListState()
 }

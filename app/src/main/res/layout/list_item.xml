@@ -11,7 +11,7 @@
         android:layout_height="1dp"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_marginEnd="@dimen/small_margin"
-        android:background="@color/gray"
+        android:background="@color/dark_grey_transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,10 +31,11 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/pokemon_name"
         android:layout_width="0dp"
+        style="@style/AppTheme.TextTitleStat"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="@dimen/very_small_margin"
-        android:layout_marginBottom="@dimen/very_small_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
         android:ellipsize="middle"
         android:gravity="center_vertical"
         android:paddingStart="@dimen/small_margin"

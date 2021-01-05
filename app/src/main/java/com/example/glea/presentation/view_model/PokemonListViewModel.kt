@@ -23,10 +23,10 @@ import java.lang.Exception
 @ExperimentalCoroutinesApi
 class PokemonListViewModel(
     private val pokemonListRepository: PokemonListRepository,
-    private val pokemonMapper : PokemonDetailMapper
+    private val pokemonMapper: PokemonDetailMapper
 ) : ViewModel() {
     val pokemonIntent = Channel<PokemonIntent>(Channel.UNLIMITED)
-    val state = MutableStateFlow<PokemonListState>(PokemonListState.Init)
+    val state = MutableStateFlow<PokemonListState>(PokemonListState.Loading)
 
     init {
         handleIntent()
@@ -37,6 +37,7 @@ class PokemonListViewModel(
             pokemonIntent.consumeAsFlow().collect {
                 when (it) {
                     is PokemonIntent.FetchPokemonList -> fetchPokemonList()
+                    is PokemonIntent.FetchFilteredPokemonList -> fetchFilteredPokemonList(it.typeName)
                 }
             }
         }
@@ -44,11 +45,27 @@ class PokemonListViewModel(
 
     private fun fetchPokemonList() {
         viewModelScope.launch {
-            //update state by fetching the list
-            state.value = PokemonListState.PokemonList(
-                GetPokemonList(pokemonListRepository, pokemonMapper).invoke().cachedIn(viewModelScope)
-            )
+            state.value = PokemonListState.Loading
+            GetPokemonList(pokemonListRepository, pokemonMapper).invoke().cachedIn(viewModelScope)
+                .collectLatest {
+                    state.value = PokemonListState.PokemonList(it)
+                }
         }
+    }
+
+    private fun fetchFilteredPokemonList(typeName: String) {
+        viewModelScope.launch {
+            state.value = PokemonListState.Loading
+            GetPokemonList(pokemonListRepository, pokemonMapper).invoke().cachedIn(viewModelScope)
+                .collect {
+                    state.value = PokemonListState.PokemonList(it.filter { pokemon ->
+                        pokemon.type!!.any { type ->
+                            type?.typeName == typeName
+                        }
+                    })
+                }
+        }
+
     }
 
 }

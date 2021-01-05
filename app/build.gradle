@@ -76,8 +76,12 @@ dependencies {
     //material
     implementation 'com.google.android.material:material:1.2.1'
 
-    //progressbar
-    compile 'com.daimajia.numberprogressbar:library:1.4@aar'
+    // Koin for Android
+    implementation "org.koin:koin-android:2.2.0"
+    // or Koin for Lifecycle scoping
+    implementation "org.koin:koin-android-scope:2.2.0"
+    // or Koin for Android Architecture ViewModel
+    implementation "org.koin:koin-android-viewmodel:2.2.0"
 
 
 }

@@ -20,6 +20,12 @@
         <attr name="fairy" format="boolean"/>
         <attr name="normal" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="PokeballLoadingDot">
+        <attr name="color" format="color" />
+        <attr name="count" format="integer" />
+        <attr name="timeout" format="integer" />
+    </declare-styleable>
 </resources>
 
 

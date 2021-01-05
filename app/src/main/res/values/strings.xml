@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">glea</string>
-    <string name="looading_error">Ops, la ricerca nel Pokedex è più lenta del previsto, controlla la tua connessione e riprova</string>
+    <string name="app_name">GLEA</string>
+    <string name="loading_error">Whoops, the pokemon search is slower than expected. Please check your connection and retry.</string>
+    <string name="retry">retry</string>
     <string name="stats_title">STATS</string>
+
+    <string name="list_title">pokedex</string>
+    <string name="splash_title">G.L.E.A</string>
+    <string name="splash_subtitle">gotta list \'em all</string>
 </resources>
