@@ -7,7 +7,7 @@
     android:layout_gravity="center_horizontal">
 
     <FrameLayout
-        android:id="@+id/view_close"
+        android:id="@+id/bottom_sheet_icon_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <View
+            android:id="@+id/bottom_sheet_icon"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center_horizontal"
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_close">
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_icon_container">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/pokemon_image_detail_front"

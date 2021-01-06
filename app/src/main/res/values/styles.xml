@@ -21,10 +21,12 @@
 
     <style name="AppTheme.TextStyle">
         <item name="android:fontFamily">@font/bebas_neue_regular</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="AppTheme.TextValueStyle">
         <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="AppTheme.TextType" parent="AppTheme.TextStyle">

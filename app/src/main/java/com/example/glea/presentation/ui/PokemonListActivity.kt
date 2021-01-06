@@ -104,10 +104,6 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
             initial_loading_view.visibility = View.VISIBLE
             delay(4000)
             initial_loading_view.visibility = View.GONE
-            //start view pager on all
-            val type = listOf<Types>()
-
-
         }
     }
 

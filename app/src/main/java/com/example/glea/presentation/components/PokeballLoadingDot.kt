@@ -19,7 +19,7 @@ class PokeballLoadingDot : FrameLayout {
     private val animators = mutableListOf<Animator>()
     private var animationDuration = 1000L
     private var minScale = 0.5F
-    private var maxScale = 1f
+    private var maxScale = 1F
     private var animator: ValueAnimator? = null
     private lateinit var pokeballProgressBar: LinearLayout
     private var pokeballBackground = R.drawable.pokeball
@@ -85,11 +85,11 @@ class PokeballLoadingDot : FrameLayout {
         return animator
     }
 
-    fun stopAnimation() {
+    private fun stopAnimation() {
         animator?.cancel()
     }
 
-    fun startAnimation() {
+    private fun startAnimation() {
         animator?.start()
     }
 

@@ -47,9 +47,7 @@ class TypesAdapter : RecyclerView.Adapter<TypesAdapter.TypeViewHolder>() {
             when (type) {
                 FIGHTING -> return TypeItemTextView.TextStatus.TYPE_FIGHTING
                 FLYING -> return TypeItemTextView.TextStatus.TYPE_FLYING
-                POISON -> {
-                    return TypeItemTextView.TextStatus.TYPE_POISON
-                }
+                POISON -> { return TypeItemTextView.TextStatus.TYPE_POISON }
                 GROUND -> return TypeItemTextView.TextStatus.TYPE_GROUND
                 ROCK -> return TypeItemTextView.TextStatus.TYPE_ROCK
                 BUG -> return TypeItemTextView.TextStatus.TYPE_BUG

@@ -1,6 +1,5 @@
 package com.example.glea.data.datamanager.di
 
-import androidx.room.TypeConverter
 import com.example.glea.data.datamanager.persistence.PokemonDb
 import com.example.glea.data.datamanager.persistence.type_converters.SpritesTypeConverter
 import com.example.glea.data.datamanager.persistence.type_converters.StatsTypeConverter
