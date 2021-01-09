@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.PagingData.Companion.empty
 import androidx.paging.cachedIn
 import com.example.glea.data.datamanager.mappers.PokemonDetailMapper
 import com.example.glea.data.datamanager.network.api.PokemonListApiHelper

@@ -64,8 +64,7 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
     }
 
     private fun initAdapter() {
-        recycler_pokemon.adapter = adapter.withLoadStateHeaderAndFooter(
-            header = PokemonLoadStateAdapter { adapter.retry() },
+        recycler_pokemon.adapter = adapter.withLoadStateFooter(
             footer = PokemonLoadStateAdapter { adapter.retry() }
         )
         adapter.pokemonSelectedListener = this
@@ -88,23 +87,28 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
             pokemonListViewModel.state.collectLatest { pokemonListState ->
                 when (pokemonListState) {
                     is PokemonListState.Loading -> {
-                        setUpInitialLoading()
+                        initial_loading_view.visibility = View.VISIBLE
+
                     }
                     is PokemonListState.PokemonList -> {
+                        observeLoadState()
                         adapter.submitData(pokemonListState.pokeList)
-
+                        initial_loading_view.visibility = View.GONE
                     }
                 }
             }
         }
     }
 
-    private fun setUpInitialLoading() {
+    private fun observeLoadState(){
         lifecycleScope.launch {
-            initial_loading_view.visibility = View.VISIBLE
-            delay(4000)
-            initial_loading_view.visibility = View.GONE
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                if(loadStates.refresh is LoadState.Error){
+                    initial_loading_view.visibility = View.GONE
+                }
+            }
         }
+
     }
 
 
