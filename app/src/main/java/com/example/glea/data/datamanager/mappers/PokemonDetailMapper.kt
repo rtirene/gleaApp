@@ -8,7 +8,6 @@ import com.example.glea.data.datamanager.entities.PokemonDetail
 
 class PokemonDetailMapper : Mapper<PokemonDetail?, Pokemon?> {
     override fun map(input: PokemonDetail?): Pokemon {
-
         return Pokemon(input?.name,
             Images(input?.sprites?.front_default, input?.sprites?.back_default),
             input?.stats?.map {

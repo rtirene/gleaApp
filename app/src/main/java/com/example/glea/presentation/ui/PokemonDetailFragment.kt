@@ -21,7 +21,6 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
     private val typeAdapter: TypesAdapter = TypesAdapter()
     private val statsAdapter: StatsAdapter = StatsAdapter()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,8 +38,6 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
             setBackImage(it.imgs?.backUrl)
             initTypesAdapter(it.type)
             initStatsAdapter(it.stats)
-
-
         }
     }
 
@@ -57,11 +54,9 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(pokemon_image_detail_front)
             .onLoadFailed(null)
-
     }
 
     private fun setBackImage(url: String?) {
-
         Glide.with(this)
             .load(url)
             .apply(
@@ -89,7 +84,6 @@ class PokemonDetailFragment : BottomSheetDialogFragment(), View.OnClickListener 
             statsAdapter.statList = statsList
         }
     }
-
 
     companion object {
         const val TAG = "PokemonDetailFragmemt"

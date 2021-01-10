@@ -29,7 +29,6 @@ class PokemonLoadStateAdapter(private val retry: () -> Unit) :
     }
 
     class LoadingStateViewHolder(view: View, retry: () -> Unit) : RecyclerView.ViewHolder(view) {
-
         companion object {
             fun getInstance(parent: ViewGroup, retry: () -> Unit): LoadingStateViewHolder {
                 val inflater = LayoutInflater.from(parent.context)

@@ -115,6 +115,4 @@ class PokemonListRemoteMediator(
     companion object {
         const val STARTING_INDEX = 0
     }
-
-
 }

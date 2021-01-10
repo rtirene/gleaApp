@@ -60,7 +60,6 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
         super.onPostCreate(savedInstanceState)
         lifecycleScope.launch {
             pokemonListViewModel.pokemonIntent.send(PokemonIntent.FetchPokemonList)
-
         }
     }
 
@@ -89,7 +88,6 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
                 when (pokemonListState) {
                     is PokemonListState.Loading -> {
                         initial_loading_view.visibility = View.VISIBLE
-
                     }
                     is PokemonListState.PokemonList -> {
                         adapter.submitData(pokemonListState.pokeList)
@@ -111,14 +109,11 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
 
     }
 
-
     override fun onPokemonSelected(pokemon: Pokemon?) {
         if (supportFragmentManager.findFragmentByTag(PokemonDetailFragment.TAG) == null) {
             val pokemonDetailFragment = PokemonDetailFragment.newInstance(pokemon)
             pokemonDetailFragment.show(supportFragmentManager, PokemonDetailFragment.TAG)
         }
-
-
     }
 }
 

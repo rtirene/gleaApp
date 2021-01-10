@@ -30,5 +30,4 @@ class PokemonListViewModelFactory(
         }
         throw IllegalArgumentException("Unknown class name")
     }
-
 }

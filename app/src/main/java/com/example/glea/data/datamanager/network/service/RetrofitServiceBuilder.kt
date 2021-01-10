@@ -8,7 +8,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitServiceBuilder {
-    //todo move this to a di class
     val api: PokemonApi
 
     val httpClient: OkHttpClient = OkHttpClient.Builder()

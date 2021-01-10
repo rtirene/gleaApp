@@ -23,5 +23,4 @@ class Types {
         const val FAIRY = "fairy"
         const val POISON = "poison"
     }
-
 }
