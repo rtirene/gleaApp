@@ -53,6 +53,7 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
         initAdapter()
         initViewModel()
         observePokemonListState()
+        observeLoadState()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -91,7 +92,6 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
 
                     }
                     is PokemonListState.PokemonList -> {
-                        observeLoadState()
                         adapter.submitData(pokemonListState.pokeList)
                         initial_loading_view.visibility = View.GONE
                     }

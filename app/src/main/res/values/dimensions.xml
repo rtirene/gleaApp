@@ -15,6 +15,7 @@
     <dimen name="text_size_very_big">40sp</dimen>
     <dimen name="text_size_very_splash">60sp</dimen>
 
+    <dimen name="pokemon_list_image">50dp</dimen>
     <dimen name="pokemon_detail_image">250dp</dimen>
     <dimen name="pokemon_type_banner_length">70dp</dimen>
 

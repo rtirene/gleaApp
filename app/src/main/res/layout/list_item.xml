@@ -18,9 +18,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/pokemon_image"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_width="@dimen/pokemon_list_image"
+        android:layout_height="@dimen/pokemon_list_image"
+        android:layout_marginStart="@dimen/smallest_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/pokemon_name"
         app:layout_constraintStart_toStartOf="parent"
