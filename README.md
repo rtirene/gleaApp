@@ -16,6 +16,12 @@ GLEA uses the [PokeAPI](https://pokeapi.co/) for retrieving pokemon details that
 <img src="/screengrabs/detail_expanded.jpg" align="center" width="250"/>
 </p>
 
+# Next steps
+- [ ] Filtered list by type
+- [ ] Advanced search by name and range of stats
+- [ ] Save single pokemon or category in a User Preferences app section
+
+
 # Tech details
 - Minimum SDK level 21
 - MVI Architecture 
