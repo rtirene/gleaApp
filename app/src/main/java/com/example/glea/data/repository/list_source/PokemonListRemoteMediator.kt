@@ -56,7 +56,7 @@ class PokemonListRemoteMediator(
             )
 
             val pokemonDetailedList = pokemonList.map { pokemonListElement ->
-                pokemonDetailApiHelper.getPokemon(pokemonListElement.name)
+                pokemonDetailApiHelper.getPokemonByUrl(pokemonListElement.url.orEmpty())
             }
 
             val endOfPaginationReached = pokemonDetailedList.size < state.config.pageSize

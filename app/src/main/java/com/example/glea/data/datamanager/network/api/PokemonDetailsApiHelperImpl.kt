@@ -10,4 +10,8 @@ class PokemonDetailsApiHelperImpl constructor(
     override suspend fun getPokemon(name: String): PokemonDetail? {
         return builder.api.getPokemonDetail(name)
     }
+
+    override suspend fun getPokemonByUrl(url: String): PokemonDetail? {
+        return builder.api.getPokemonDetailByUrl(url)
+    }
 }
