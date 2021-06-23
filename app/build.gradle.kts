@@ -1,8 +1,12 @@
+val kotlin_version: String by extra
 plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
+}
+apply {
+    plugin("kotlin-android")
 }
 
 android {
@@ -79,6 +83,9 @@ dependencies {
     implementation(Dependencies.KOIN_ANDROID)
     implementation(Dependencies.KOIN_ANDROIDX_SCOPE)
     implementation(Dependencies.KOIN_ANDROIDX_VIEWMODEL)
+    implementation(Dependencies.VIEW_MODEL)
 
-
+}
+repositories {
+    mavenCentral()
 }

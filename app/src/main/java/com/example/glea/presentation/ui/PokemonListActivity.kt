@@ -5,53 +5,43 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import com.example.glea.R
-import com.example.glea.data.datamanager.mappers.PokemonDetailMapper
-import com.example.glea.data.datamanager.network.api.PokemonDetailsApiHelperImpl
-import com.example.glea.data.datamanager.network.api.PokemonListApiHelperImpl
-import com.example.glea.data.datamanager.persistence.PokemonDb
+import com.example.glea.data.datamanager.di.POKEMON_LIST_VIEW_MODEL
 import com.example.glea.domain.models.Pokemon
 import com.example.glea.presentation.adapter.PokemonListAdapter
 import com.example.glea.presentation.adapter.PokemonLoadStateAdapter
 import com.example.glea.presentation.intent.PokemonIntent
 import com.example.glea.presentation.states.PokemonListState
 import com.example.glea.presentation.view_model.PokemonListViewModel
-import com.example.glea.presentation.view_model.PokemonListViewModelFactory
-import com.example.glea.util.Types
 import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.qualifier.named
 
 
 @RequiresApi(Build.VERSION_CODES.M)
 @ExperimentalCoroutinesApi
+@ExperimentalPagingApi
 class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSelectedListener {
 
     private val adapter: PokemonListAdapter = PokemonListAdapter()
-    private lateinit var pokemonListViewModel: PokemonListViewModel
 
-    private val pokemonDb: PokemonDb by inject { parametersOf(this, false, this, this, this) }
-    private val pokemonListApiHelperImpl: PokemonListApiHelperImpl by inject { parametersOf(this) }
-    private val pokemonDetailsApiHelperImpl: PokemonDetailsApiHelperImpl by inject {
-        parametersOf(
-            this
+    private val pokemonListViewModel: PokemonListViewModel by viewModel(
+        named(
+            POKEMON_LIST_VIEW_MODEL
         )
-    }
-    private val pokemonMapper: PokemonDetailMapper by inject { parametersOf(this) }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_list)
 
         initAdapter()
-        initViewModel()
         observePokemonListState()
         observeLoadState()
     }
@@ -70,17 +60,6 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
         adapter.pokemonSelectedListener = this
     }
 
-    private fun initViewModel() {
-        pokemonListViewModel = ViewModelProvider(
-            this,
-            PokemonListViewModelFactory(
-                pokemonListApiHelperImpl,
-                pokemonDetailsApiHelperImpl,
-                pokemonDb,
-                pokemonMapper
-            )
-        ).get(PokemonListViewModel::class.java)
-    }
 
     private fun observePokemonListState() {
         lifecycleScope.launch {
@@ -98,10 +77,10 @@ class PokemonListActivity : AppCompatActivity(), PokemonListAdapter.OnPokemonSel
         }
     }
 
-    private fun observeLoadState(){
+    private fun observeLoadState() {
         lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest { loadStates ->
-                if(loadStates.refresh is LoadState.Error){
+                if (loadStates.refresh is LoadState.Error) {
                     initial_loading_view.visibility = View.GONE
                 }
             }

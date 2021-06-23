@@ -1,9 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    var kotlin_version: String by extra
+    kotlin_version = "1.5.20-RC"
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
@@ -17,7 +20,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-
+        jcenter()
     }
 }
 

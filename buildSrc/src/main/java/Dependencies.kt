@@ -33,7 +33,7 @@ object Dependencies{
     const val ANDROIDX_FRAGMENT = "androidx.fragment:fragment-ktx:${Versions.ANDROIDX_FRAGMENT}"
     const val ANDROIDX_LIFECYCLE = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.ANDROIDX_LIFECYCLE_VERSION}"
     const val ANDROIDX_LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-extensions:${Versions.ANDROIDX_LIFECYCLE_VERSION}"
-    const val CARDVIEW = "androidx.cardview:cardview${Versions.CARDVIEW_VERSION}"
+    const val CARDVIEW = "androidx.cardview:cardview:${Versions.CARDVIEW_VERSION}"
     const val DRAWER_LAYOUT = "androidx.drawerlayout:drawerlayout:${Versions.DRAWER_VERSION}"
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.GLIDE_VERSION}"
