@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface PokemonDetailApiHelper {
     suspend fun getPokemon(name: String): PokemonDetail?
+    suspend fun getPokemonByUrl(url: String): PokemonDetail?
 }

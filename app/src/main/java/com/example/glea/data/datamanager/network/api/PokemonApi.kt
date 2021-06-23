@@ -1,11 +1,11 @@
-package com.example.glea.datamanager.network.api
+package com.example.glea.data.datamanager.network.api
 
 import com.example.glea.data.datamanager.entities.PokemonDetail
 import com.example.glea.data.datamanager.entities.PokemonList
-import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface PokemonApi {
 
@@ -15,6 +15,9 @@ interface PokemonApi {
 
     @GET(URL_POKEMON_DETAIL)
     suspend fun getPokemonDetail(@Path("name") name: String?): PokemonDetail
+
+    @GET
+    suspend fun getPokemonDetailByUrl(@Url url: String): PokemonDetail?
 
     companion object {
         const val URL_POKEMON_LIST = "pokemon"
