@@ -1,6 +1,6 @@
 package com.example.glea.data.datamanager.network.service
 
-import com.example.glea.ConfigUtils
+import com.example.glea.util.ConfigUtils
 import com.example.glea.data.datamanager.network.api.PokemonApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
